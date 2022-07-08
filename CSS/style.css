@@ -1,0 +1,180 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+    font-size: 20px;
+    font-family: arial;
+}
+body{
+    margin-bottom: 100px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.header{
+    background: #1d1e20;
+    display: flex; /* coloca os elemento ao lado */ 
+    flex-wrap: wrap; /* quebra os elementos de acordo com o tamanho */ 
+    justify-content: space-between; /* alinha os elementos pela extremidade*/ 
+    align-items: center; /* alinha os itens ao centro */ 
+    padding: 20px;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    margin-left: 10px;
+}
+
+.menu li a{
+    display: block;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(48, 23, 235);
+    color: white;
+    padding: 10px;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+/* CSS FLEXBOX */ 
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px; /* tamanho máximo do container*/
+    margin: 0 auto; /*alinhamento ao centro*/
+}
+
+.flex > div{
+    flex: 1 1 300px;
+    margin: 10px;
+    text-align: center;
+}
+
+/* CSS GRID 1 */ 
+
+.grid1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* repeat(3, 1fr)*/
+    max-width: 1000px; /* tamanho máximo do container*/
+    padding: 10px;
+    margin: 0 auto; /*alinhamento ao centro*/
+    grid-gap: 20px; /*margin de 20px*/
+    
+}
+
+.grid1 > div:nth-child(n + 4) {  /*primeira div ou (n + 4) apartir do 4 item*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.grid1 > div.anuncio{
+    grid-column: 1; /*posiciona na primeira coluna*/
+    grid-row: 2 /5; /*posiciona na segunda linha até a 5 linha*/
+    display:block;
+}
+
+@media(max-width: 600px){
+    .grid1{
+        grid-template-columns: 1fr 1fr;
+    }
+    .grid1 > div:nth-child(n + 4) { 
+        display: block;
+    }
+    .grid1 > div.anuncio{
+        grid-column: auto; /*posiciona automaticamente*/
+        grid-row: auto; /*posiciona automaticamente*/
+        order: -1; /*posiciona automaticamente*/
+    }
+}
+@media(max-width: 200px){
+    .grid1{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CSS GRID 2 */ 
+
+
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr 140px;  /* repeat(3, 1fr)*/
+    max-width: 1000px; /* tamanho máximo do container*/
+    padding: 10px;
+    margin: 0 auto; /*alinhamento ao centro*/
+    grid-gap: 20px; /*margin de 20px*/
+}
+
+.grid2 >div:nth-child(1){
+    grid-row: 1 /5; /*posiciona na segunda linha até a 5 linha*/
+
+}
+.sidebar >div{
+    margin-bottom: 10px;
+}
+
+@media (max-width:600px) {
+    .grid2{
+        grid-template-columns: 1fr; 
+    } 
+    .sidebar{
+        display: flex;
+        overflow: scroll; /*gera barra de rolagem*/
+    }
+    .sidebar >div{
+        flex: 1 0 200px;  /* 1º parâmetro: "" 2º parâmetro: "'0' não diminui o container " 3º parâmetro: "'200px' tamanho do container"*/
+        margin: 0 10px;
+    }
+}
+
+/* CSS GRID 3 */ 
+.grid3{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto; /*alinhamento ao centro*/
+    grid-gap: 20px; /*margin de 20px*/
+    max-width: 800px; /* tamanho máximo do container*/
+    padding: 10px;
+}
+
+.grid3-item{
+    display: grid;
+    background-color: aqua;
+}
+
+.grid3-item:nth-child(1){
+    grid-row: 1/3; /* a imagem1 ocupa da linha 1 a linha3*/
+}
+
+.grid3-item img{
+    grid-column: 1;
+    grid-row: 1/3;
+    align-self: end; /* alinhar ao fim*/
+    
+    
+}
+
+.grid3-item p{
+    background: rgba(0,0,0,.6);
+    padding: 10px;
+    color: white;
+    grid-column: 1;
+    grid-row: 2/3;
+    align-self: end; /* alinhar ao fim*/
+}
