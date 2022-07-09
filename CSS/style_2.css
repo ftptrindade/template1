@@ -1,0 +1,92 @@
+/* INFORMAÇÕES
+1rem = 16px (padrão)
+https://www.nickolasjoe.com/qual-a-diferenca-entre-pixel-em-e-rem-entenda-essas-unidades-css/
+*/
+body, ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#header {
+    display: flex;
+    /*align-items: alinha os items do header ao centro*/
+    align-items: center;
+    /*justify-content: justifica o conteúdo*/
+    justify-content: space-between;
+    height: 70px;
+    padding: 20px;
+    /*box-sizing: soma o height ao padding e limita a altura do height, assim o header terá somente os 70px definidos*/
+    box-sizing: border-box;
+    background: #e7e7e7;
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Adiciona uma área maior no menu para clicar*/
+#menu a {
+    display: block;
+    padding: 8px;
+}
+
+/* Esconde o botão quando width for maior que 600*/
+#btn-mobile {
+    display: none;
+}
+
+/* Ações quando width for menor que 600*/
+@media (max-width: 600px) {
+    #btn-mobile {
+        display: block;
+    }
+
+    #menu {
+        display: none;
+        /* display: block; */
+        /* position: absolute Fica por cima de qualquer elemento */
+        position: absolute;
+        /* Obrigatório informar o tamanho quando tem position absolute */
+        width: 100%;
+        /* Posiciona o menu para baixo e alinha a esquerda */
+        top: 70px;
+        right: 0px;
+        background: #e7e7e7;
+        /* Define uma altura de 100% da tela com vh (viewport height) */
+        /* Calculo para retirar a barra de rolagem devido aos 70px */
+        height: calc(100vh - 70px);
+        /* z-index garante que os demais elementos fiquem abaixo*/
+        z-index: 1000;
+    }
+
+    /* exibe o menu quando a classe active estiver ativa*/
+    #nav.active #menu {
+        display: block;
+    }
+
+    #menu a{
+        /* padding para cima e baixo */
+        padding: 1rem 0;
+        /* margin para os lados */
+        margin: 0 1rem;
+        /* borda na parte de baixo */
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    }
+}
